@@ -1,44 +1,78 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+{% extends "base.html" %}
+{% block content %}
+ <main>
 
-<head>
+    <section class="hero">
 
-    <meta charset="UTF-8">
+        <div class="container">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+            <div class="hero-content">
 
-    <title>SG Platform</title>
+                <div class="hero-text">
 
-</head>
+                    <h1>
+                    Pessoas usando tecnologia<br>
 
-<body>
+                    Tecnologia ajudando pessoas</h1>
 
-    <header>
+                <p>
+                    Plataforma inteligente para gestão de serviços,
+                    ativos e operações empresariais.
+                </p>
 
-        <h1>SG Platform</h1>
+                    <div class="hero-buttons">
 
-        <p>
-            Pessoas usando tecnologia.
-            Tecnologia ajudando pessoas.
-        </p>
+                         <a class="btn btn-primary">
+                         Começar agora
+                         </a>
 
-    </header>
+                        <a class="btn btn-secondary">
+                        Saiba mais
+                        </a>
 
-    <main>
+                    </div>
 
-        <button>Entrar</button>
+                </div>
 
-        <button>Saiba mais</button>
+                <div class="hero-image">
 
-    </main>
+                    <img
+                    src="https://placehold.co/500x400"
+                    alt="Ilustração da plataforma">
 
-    <footer>
+                </div>
 
-        <p>© 2026 SG Platform</p>
+            </div>
 
-    </footer>
+        </div>
 
-</body>
+    </section>
 
-</html>
+    <section class="features">
+
+        <div class="container">
+
+             <h2>Recursos da Plataforma</h2>
+
+                <div class="cards">
+
+                    {% for recurso in recursos %}
+
+                        <div class="card">
+
+                            <h3>{{ recurso.titulo }}</h3>
+
+                            <p>{{ recurso.descricao }}</p>
+
+                        </div>
+
+                    {% endfor %}
+  
+                </div>
+
+            </div>
+
+    </section>
+
+</main>
+{% endblock %}
