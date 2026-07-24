@@ -10,6 +10,11 @@ def home():
     recursos = RecursoService.listar()
 
     return render_template(
-        "index.html",
+        "home.html",
         recursos=recursos
     )
+
+@app.route("/chamados")
+def chamados():
+
+    return render_template("chamados.html")

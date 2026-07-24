@@ -38,22 +38,51 @@ CONTAINER
 HEADER
 ======================*/
 
-.site-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:25px 60px;
-    background:white;
-    border-bottom:1px solid #CBD5E1;
+header {
+
+    background-color: #1E3A8A;
+    padding: 20px 0;
 
 }
 
-nav a{
+.header-content {
 
-    text-decoration:none;
-    color:#1E293B;
-    margin-left:25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.navbar {
+
+    display:flex;
+    gap: 25px;
+
+}
+
+.navbar a {
+
     font-weight:bold;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 
+    color .3s ease;
+
+}
+
+.navbar a:hover {
+
+    color: #60A5FA;
+
+}
+
+.logo a {
+
+    color: white;
+    text-decoration: none;
+    font-size:2rem;
+    font-weight:700;
 
 }
 
@@ -102,20 +131,18 @@ HERO
 
 .hero-image{
 
-    flex:1;
+     flex:1;
     display:flex;
     justify-content:center;
 
 }
-
 .hero-image img{
 
-    max-width:100%;
+    width:100%;
     max-width:500px;
     border-radius:20px;
 
 }
-
 
 /*======================
 BOTÕES
@@ -241,6 +268,107 @@ CARDS
     transform:translateY(-5px);
 
 }
+
+/*======================
+TABLE
+======================*/
+
+.table-container{
+
+    margin-top:40px;
+    overflow-x:auto;
+
+}
+
+.table{
+
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.table th{
+
+    background:#1E3A8A;
+    color:white;
+    text-align:left;
+    padding:16px;
+
+}
+
+.table td{
+
+    padding:16px;
+    border-bottom:1px solid #E2E8F0;
+
+}
+
+.table tbody tr:hover{
+
+    background:#EFF6FF;
+
+}
+
+/*======================
+BADGES
+======================*/
+
+.badge{
+
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:600;
+
+}
+
+.badge-open{
+
+    background:#DCFCE7;
+    color:#166534;
+
+}
+
+.badge-progress{
+
+    background:#FEF3C7;
+    color:#92400E;
+
+}
+
+.badge-closed{
+
+    background:#DBEAFE;
+    color:#1E3A8A;
+
+}
+
+.badge-high{
+
+    background:#FEE2E2;
+    color:#991B1B;
+
+}
+
+.badge-medium{
+
+    background:#FEF3C7;
+    color:#92400E;
+
+}
+
+.badge-low{
+
+    background:#DCFCE7;
+    color:#166534;
+
+}
+
 /*======================
 FOOTER
 ======================*/
@@ -248,3 +376,4 @@ FOOTER
 /*======================
 RESPONSIVIDADE
 ======================*/
+

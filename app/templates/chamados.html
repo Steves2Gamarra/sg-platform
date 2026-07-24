@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="container">
+
+    <h1>Chamados</h1>
+
+    <p>Gerenciamento de chamados da SG Platform.</p>
+
+    <div class="table-container">
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Nº</th>
+                    <th>Título</th>
+                    <th>Status</th>
+                    <th>Prioridade</th>
+                    <th>Responsável</th>
+                    <th>Ações</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>001</td>
+                    <td>Computador não liga</td>
+                    <td>
+
+                        <span class="badge badge-open">
+
+                          Aberto
+
+                        </span>
+
+                    </td>
+                    <td>
+
+                        <span class="badge badge-high">
+
+                          Alta
+
+                        </span>
+
+                    </td>
+                    <td>Steve</td>
+                    <td>
+                        <button class="btn btn-secondary">
+                            Editar
+                        </button>
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>002</td>
+                    <td>Erro no Outlook</td>
+                    <td>
+                         <span class="badge badge-progress">
+
+                        Em andamento
+
+                         </span>
+                    </td>
+                    <td>
+
+                      <span class="badge badge-medium">
+
+                       Média
+
+                     </span>
+
+                    </td>
+                    <td>João</td>
+                    <td>
+                        <button class="btn btn-secondary">
+                            Editar
+                        </button>
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>003</td>
+                    <td>Troca de mouse</td>
+                    <td>
+
+                        <span class="badge badge-closed">
+
+                        Concluído
+
+                        </span>
+
+                    </td>
+                    <td>
+
+                        <span class="badge badge-low">
+
+                      Baixa
+
+                        </span>
+
+                     </td>
+                    <td>Maria</td>
+                    <td>
+                        <button class="btn btn-secondary">
+                            Editar
+                        </button>
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+{% endblock %}
