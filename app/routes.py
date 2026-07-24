@@ -1,39 +1,13 @@
 from flask import render_template
-from app import app
-from app.models import Recurso
 
+from app import app
+
+from app.services import RecursoService
 
 @app.route("/")
 def home():
 
-    recursos = [
-
-        Recurso(
-            "Chamados",
-            "Gerencie solicitações técnicas."
-        ),
-
-        Recurso(
-            "Inventário",
-            "Controle computadores, notebooks e ativos."
-        ),
-
-        Recurso(
-            "Usuários",
-            "Cadastre colaboradores e acompanhe acessos."
-        ),
-
-        Recurso(
-            "Relatórios",
-            "Visualize indicadores e desempenho da equipe."
-        ),
-
-        Recurso(
-            "Financeiro",
-            "Controle receitas, despesas e fluxo de caixa."
-        )
-
-    ]
+    recursos = RecursoService.listar()
 
     return render_template(
         "index.html",
