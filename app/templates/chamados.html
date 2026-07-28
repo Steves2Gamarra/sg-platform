@@ -29,96 +29,47 @@
 
             <tbody>
 
-                <tr>
+                {% for chamado in chamados %}
 
-                    <td>001</td>
-                    <td>Computador não liga</td>
-                    <td>
+<tr>
 
-                        <span class="badge badge-open">
+    <td>{{ chamado.numero }}</td>
 
-                          Aberto
+    <td>{{ chamado.titulo }}</td>
 
-                        </span>
+    <td>
 
-                    </td>
-                    <td>
+        <span class="badge {{ chamado.status_css }}">
+            {{ chamado.status }}
 
-                        <span class="badge badge-high">
+        </span>
 
-                          Alta
+    </td>
 
-                        </span>
+    <td>
 
-                    </td>
-                    <td>Steve</td>
-                    <td>
-                        <button class="btn btn-secondary">
-                            Editar
-                        </button>
-                    </td>
+        <span class="badge {{ chamado.prioridade_css }}">
+            {{ chamado.prioridade }}
 
-                </tr>
+        </span>
 
-                <tr>
+    </td>
 
-                    <td>002</td>
-                    <td>Erro no Outlook</td>
-                    <td>
-                         <span class="badge badge-progress">
+    <td>{{ chamado.responsavel }}</td>
 
-                        Em andamento
+    <td>
 
-                         </span>
-                    </td>
-                    <td>
+        <button class="btn btn-secondary">
 
-                      <span class="badge badge-medium">
+            Editar
 
-                       Média
+        </button>
 
-                     </span>
+    </td>
 
-                    </td>
-                    <td>João</td>
-                    <td>
-                        <button class="btn btn-secondary">
-                            Editar
-                        </button>
-                    </td>
+</tr>
 
-                </tr>
-
-                <tr>
-
-                    <td>003</td>
-                    <td>Troca de mouse</td>
-                    <td>
-
-                        <span class="badge badge-closed">
-
-                        Concluído
-
-                        </span>
-
-                    </td>
-                    <td>
-
-                        <span class="badge badge-low">
-
-                      Baixa
-
-                        </span>
-
-                     </td>
-                    <td>Maria</td>
-                    <td>
-                        <button class="btn btn-secondary">
-                            Editar
-                        </button>
-                    </td>
-
-                </tr>
+{% endfor %}
 
             </tbody>
 

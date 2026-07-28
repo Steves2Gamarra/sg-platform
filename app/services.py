@@ -1,4 +1,4 @@
-from app.models import Recurso
+from app.models import Recurso, Chamado
 
 class RecursoService:
 
@@ -42,4 +42,43 @@ class RecursoService:
                 "Controle de receitas, despesas e fluxo de caixa"
 
             )
+
+        ]
+
+class ChamadoService:
+
+    @staticmethod
+    def listar():
+
+        return [
+
+            Chamado(          
+
+                "CH-0001",
+                "Servidor indisponível",
+                "Aberto",
+                "Alta",
+                "Carlos silva"
+
+            ),
+
+            Chamado(  
+
+                "CH-0002",
+                "Erro ao acessar o e-mail",
+                "Em andamneto",
+                "Média",
+                "Ana Souza"
+
+            ),
+
+            Chamado(
+
+                "CH-0003",
+                "Instalação do Oficce",
+                "Concluído",
+                "Baixa",
+                "João Pereira"
+            ) 
+
         ]

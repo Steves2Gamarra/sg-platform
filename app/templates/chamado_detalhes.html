@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="container">
+
+    <h1>{{ chamado.numero }}</h1>
+
+    <h2>{{ chamado.titulo }}</h2>
+
+    <hr>
+
+    <p>
+
+        <strong>Prioridade:</strong>
+
+        {{ chamado.prioridade }}
+
+    </p>
+
+    <p>
+
+        <strong>Status:</strong>
+
+        {{ chamado.status }}
+
+    </p>
+
+    <p>
+
+        <strong>Responsável:</strong>
+
+        {{ chamado.responsavel }}
+
+    </p>
+
+    <br>
+
+    <a href="{{ url_for('chamados') }}"
+       class="btn btn-secondary">
+
+        Voltar
+
+    </a>
+
+</section>
+
+{% endblock %}
