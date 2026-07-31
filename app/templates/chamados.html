@@ -18,6 +18,7 @@
 
                     <th>Nº</th>
                     <th>Título</th>
+                    <th>Categoria</th>
                     <th>Status</th>
                     <th>Prioridade</th>
                     <th>Responsável</th>
@@ -36,6 +37,8 @@
     <td>{{ chamado.numero }}</td>
 
     <td>{{ chamado.titulo }}</td>
+
+    <td>{{ chamado.categoria }}</td>
 
     <td>
 
@@ -58,6 +61,15 @@
     <td>{{ chamado.responsavel }}</td>
 
     <td>
+
+        <a
+
+            href="{{ url_for('visualizar_chamado', id=chamado.numero[3:]|int) }}"
+            class="btn btn-primary">
+
+            Detalhes
+        
+        </a>
 
         <button class="btn btn-secondary">
 

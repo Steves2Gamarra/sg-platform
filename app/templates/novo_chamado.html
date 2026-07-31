@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="container">
+
+    <h1 class="page-title">
+
+        {{ titulo_pagina }}
+
+    </h1>
+
+    <p class="page-description">
+
+        Abra uma solicitação para a equipe de TI preenchendo as informações abaixo.
+
+    </p>
+
+    <div class="card-form">
+
+        <div class="card-header">
+
+            <h2>
+
+                Informações Gerais
+
+            </h2>
+
+            <p>
+
+                Preencha os dados básicos do chamado.
+
+            </p>
+
+        </div>        
+
+    <form
+            
+        method="POST"
+        action="{{ url_for('novo_chamado') }}">
+
+            <div class="form-grid">
+
+                <div class="form-group full-width">
+
+                    <label for="titulo">Título</label>
+
+                    <input
+
+                        type="text"
+                        id="titulo"
+                        name="titulo"
+                        placeholder="Ex.: Não consigo acessar o Outlook"
+
+                        >
+                </div>
+
+            <div class="form-group">
+
+                <label for="categoria">Categoria</label>
+
+                <select id="categoria" name="categoria">
+
+                    <option>Hardware</option>
+                    <option>Software</option>
+                    <option>Rede</option>
+                    <option>E-Mail</option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="equipamento">Equipamento</label>
+
+                <input
+
+                    type="text"
+                    id="equipamento"
+                    name="equipamento"
+
+                >
+
+            </div>
+
+            <div class="form-group full-width">
+
+                <label for="descricao">Descrição</label>
+
+                <textarea
+                
+                id="descricao"
+                name="descricao"
+                rows="7"
+                                
+                ></textarea>
+
+            </div>
+
+        </div>
+           
+        <div class="form-actions">
+
+            <a 
+
+                href="{{ url_for('chamados') }}"
+                class="btn">
+
+                Cancelar
+
+            </a>
+
+            <button
+            
+                class="btn btn-primary"
+                type="submit">
+
+                {{ texto_botao }}
+
+            </button>
+
+        </div>
+    
+    </form>
+
+    </div>    
+
+</section>
+
+{% endblock %}

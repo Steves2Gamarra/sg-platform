@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request, redirect, url_for
 
 from app import app
 
@@ -27,16 +27,7 @@ def chamados():
 @app.route("/chamados/<int:id>")
 def visualizar_chamado(id):
 
-    chamados = ChamadoService.listar()
-
-    chamado = None
-
-    for item in chamados:
-
-        if item.numero == f"CH-{id:04d}":
-
-            chamado = item
-            break
+    chamado = ChamadoService.buscar_por_numero(id)    
 
     if chamado is None:
 
@@ -47,10 +38,54 @@ def visualizar_chamado(id):
         chamado=chamado
     )
 
-@app.route("/chamdos/novos")
-def novo_chamado():
+@app.route("/chamados/<int:id>/editar")
+def editar_chamado(id):
+
+    chamado = ChamadoService.buscar_por_numero(id)
+
+    if chamado is None:
+
+        return "Chamado não encontrado", 404
 
     return render_template(
-        "novo_chamado.html"
-        
+
+        "novo_chamado.html",
+        chamado=chamado,
+        titulo_pagina="Editar Chamado",
+        texto_botao="Salvar Alterações"
+
     )
+
+
+@app.route("/chamados/novo", methods=["GET", "POST"])
+def novo_chamado():
+
+    if request.method == "POST":
+
+        titulo = request.form.get("titulo")
+        categoria = request.form.get("categoria")
+        equipamento = request.form.get("equipamento")
+        descricao = request.form.get("descricao")
+
+        ChamadoService.cadastrar(
+
+            titulo,
+            categoria,
+            equipamento,
+            descricao
+        )
+        
+        return redirect(url_for("chamados"))
+
+    return render_template(
+        "novo_chamado.html",
+        chamado=None,
+        titulo_pagina="Novo Chamado",
+        texto_botao="Abrir Chamado"
+
+    )
+
+
+    
+        
+    

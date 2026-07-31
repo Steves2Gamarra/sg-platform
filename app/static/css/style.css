@@ -1,3 +1,54 @@
+/* ===========================
+   DESIGN SYSTEM
+=========================== */
+
+:root{
+
+    /* Cores */
+
+    /* cores principais */
+    --primary:#2563EB;
+    --primary-dark:#1D4ED8;
+
+    /* Fundos */
+    --background:#F3F4F6;
+    --surface:#FFFFFF;
+
+    /* Texto */
+    --text:#1F2937;
+    --text-light:#6B7280;
+
+    /* Bordas */
+    --border:#D1D5DB;
+
+    /* Estados */
+    --success:#22C55E;
+    --warning:#F59E0B;
+    --danger:#EF4444;
+
+    /* Sombras */
+    --shadow:0 4px 12px rgba(0,0,0,.08);
+
+    /* Bordas arredondadas */
+    --radius:12px;
+
+    /* Header */
+    --header:#1E3A8A;
+
+    /* Navbar */
+    --white:#FFFFFF;
+
+     /* Espaçamentos */
+
+     --space-xs:4px;
+     --space-sm:8px;
+     --space-md:16px;
+     --space-lg:24px;
+     --space-xl:32px;
+    
+}
+
+
 /*======================
 RESET
 ======================*/
@@ -15,8 +66,10 @@ BODY
 
 body{
 
-    background-color: #F8FAFC;
-    color: #1E293B;
+    background:var(--background);
+
+    color:var(--text);
+
     font-family:Arial, Helvetica, sans-serif;
 
 }
@@ -30,7 +83,7 @@ CONTAINER
     width:100%;
     max-width:1200px;
     margin:0 auto;
-    padding:0 20px;
+    padding:var(--space-lg);
 
 }
 
@@ -40,7 +93,7 @@ HEADER
 
 header {
 
-    background-color: #1E3A8A;
+    background:var(--header);
     padding: 20px 0;
 
 }
@@ -63,7 +116,7 @@ header {
 .navbar a {
 
     font-weight:bold;
-    color: white;
+    color:var(--white);
     text-decoration: none;
     font-weight: 500;
     transition: 
@@ -131,7 +184,7 @@ HERO
 
 .hero-image{
 
-     flex:1;
+    flex:1;
     display:flex;
     justify-content:center;
 
@@ -184,15 +237,15 @@ BOTÕES
 
 .btn-primary{
 
-    background-color: #2563EB;
+    background:var(--primary);
+
     color:white;
-    border-color:transparent;
 
 }
 
 .btn-primary:hover{
 
-    background-color:#1D4ED8;
+    background:var(--primary-dark);
 
 }
 
@@ -267,6 +320,29 @@ CARDS
 
     transform:translateY(-5px);
 
+}
+
+.card-header{
+
+    margin-bottom:30px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--border);
+
+}
+
+.card-header h2{
+
+    font-size:24px;
+    margin-bottom:6px;
+    color:var(--text);
+
+}
+
+.card-header {
+
+    color:var(--text-light);
+    font-size:15px;
+    
 }
 
 /*======================
@@ -366,6 +442,137 @@ BADGES
 
     background:#DCFCE7;
     color:#166534;
+
+}
+
+/* ===========================
+   FORMULÁRIOS
+=========================== */
+
+.form-group {
+
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+}
+
+.form-group label {
+
+    margin-bottom: 8px;
+    font-weight: bold;
+    color:var(--text);
+
+}
+
+.form-group input {
+
+    width:100%;
+    padding: 12px;
+    border:1px solid var(--border);
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing:border-box;
+
+}
+
+.form-group textarea {
+
+    width:100%;
+    min-height:220px;
+    padding: 12px;
+    border:1px solid var(--border);
+    border-radius: 6px;
+    font-size: 16px;
+    resize: vertical;
+    font-family:inherit;
+    box-sizing:border-box;
+
+}
+
+.form-actions{
+
+    display:flex;
+    justify-content:flex-end;
+    gap:15px;
+    margin-top:30px;
+
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+    outline:none;
+    border-color:#2563EB;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15)
+
+}
+
+.form-grid{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+
+}
+
+.full-width{
+
+    grid-column:1 / -1;
+}
+
+.form-group select{
+
+    width:100%;
+    padding:12px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    font-size:16px;
+    box-sizing:border-box;
+    background:#fff;
+
+}
+
+/* ===========================
+   CARD DE FORMULÁRIO
+=========================== */
+
+.card-form{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+}
+
+.card-form h2{
+
+    margin-bottom:25px;
+    color:#1f2937;
+
+}
+
+.page-description{
+
+    color:var(--text-light);
+
+    margin-bottom:25px;
+
+    font-size:16px;
+
+}
+
+.card-form h2{
+
+    margin-bottom:25px;
+
+    color:var(--text);
+
+    font-size:22px;
 
 }
 

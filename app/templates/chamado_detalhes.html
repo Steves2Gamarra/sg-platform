@@ -6,42 +6,113 @@
 
     <h1>{{ chamado.numero }}</h1>
 
-    <h2>{{ chamado.titulo }}</h2>
+    <p class="page-description">
 
-    <hr>
-
-    <p>
-
-        <strong>Prioridade:</strong>
-
-        {{ chamado.prioridade }}
+        Detalhes completos do chamado
 
     </p>
 
-    <p>
+    <div class="card card-form">
 
-        <strong>Status:</strong>
+        <div class="form-grid">
 
-        {{ chamado.status }}
+            <div>
 
-    </p>
+                  <label>Título</label>
 
-    <p>
+                  <p>{{ chamado.titulo }}</p>
 
-        <strong>Responsável:</strong>
+            </div>
 
-        {{ chamado.responsavel }}
+             <div>
 
-    </p>
+                 <label>Categoria</label>
 
-    <br>
+                <p>{{ chamado.categoria }}</p>
 
-    <a href="{{ url_for('chamados') }}"
-       class="btn btn-secondary">
+            </div>
 
-        Voltar
+            <div>
 
-    </a>
+                <label>Equipamento</label>
+
+                <p>{{ chamado.equipamento }}</p>
+
+            </div>
+
+             <div>
+
+              <label>Status</label>
+
+                <span class="badge {{ chamado.status_css }}">
+
+                {{ chamado.status }}
+
+              </span>
+
+            </div>
+
+             <div>
+
+              <label>Prioridade</label>
+
+              <span class="badge {{ chamado.prioridade_css }}">
+
+                 {{ chamado.prioridade }}
+
+                </span>
+
+            </div>
+
+             <div>
+
+               <label>Responsável</label>
+
+               <p>{{ chamado.responsavel }}</p>
+
+            </div>
+
+             <div class="full-width">
+
+                <label>Descrição</label>
+
+                <p>{{ chamado.descricao }}</p>
+
+            </div>
+
+             <div>
+
+             <label>Data de abertura</label>
+
+              <p>{{ chamado.data_abertura }}</p>
+
+            </div>
+
+             </div>
+
+            <div class="form-actions">
+
+              <a
+
+               href="{{ url_for('chamados') }}"
+               class="btn btn-secondary">
+        
+              Voltar
+    
+                </a>
+
+                <a
+
+                href="#"
+                class="btn btn-primary">
+    
+                Editar
+
+                </a>
+
+        </div>
+
+    </div>
 
 </section>
 
