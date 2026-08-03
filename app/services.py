@@ -53,7 +53,7 @@ class ChamadoService:
         Chamado(
             "CH-0001",
             "Servidor indisponível",
-            "infraestrutura",
+            "Hardware",
             "Servidor Principal",
             "Servidor indisponível desde às 08:00.",
             "Aberto",
@@ -128,6 +128,32 @@ class ChamadoService:
 
                 return chamado
             
-            return None
+        return None
+
+    @staticmethod
+    def atualizar(numero, titulo, categoria, equipamento, descricao):
+
+        chamado = ChamadoService.buscar_por_numero(numero)
+
+        if chamado is None:
+
+            return
+
+        chamado.titulo = titulo
+        chamado.categoria = categoria
+        chamado.equipamento = equipamento
+        chamado.descricao = descricao
+
+    @staticmethod
+    def excluir(numero):
+
+        chamado = ChamadoService.buscar_por_numero(numero)
+
+        if chamado is None:
+
+            return
+
+        ChamadoService._chamados.remove(chamado)
+
 
     

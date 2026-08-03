@@ -37,7 +37,10 @@
     <form
             
         method="POST"
-        action="{{ url_for('novo_chamado') }}">
+        
+        action="{% if chamado %}
+
+                {{ url_for('salvar_edicao', id=chamado.numero[3:]|int) }}{% else %}{{ url_for('novo_chamado') }}{% endif %}">
 
             <div class="form-grid">
 
@@ -50,6 +53,7 @@
                         type="text"
                         id="titulo"
                         name="titulo"
+                        value="{{ chamado.titulo if chamado else '' }}"
                         placeholder="Ex.: Não consigo acessar o Outlook"
 
                         >
@@ -61,10 +65,29 @@
 
                 <select id="categoria" name="categoria">
 
-                    <option>Hardware</option>
-                    <option>Software</option>
-                    <option>Rede</option>
-                    <option>E-Mail</option>
+                    <option {% if chamado and chamado.categoria == "Hardware" %}selected{% endif %}>
+
+                        Hardware
+
+                    </option>
+
+                    <option {% if chamado and chamado.categoria == "Software" %}selected{% endif %}>
+
+                        Software
+
+                    </option>
+
+                    <option {% if chamado and chamado.categoria == "Rede" %}selected{% endif %}>
+
+                        Rede
+
+                    </option>
+
+                    <option {% if chamado and chamado.categoria == "E-Mail" %}selected{% endif %}>
+                        
+                        E-Mail
+
+                    </option>
 
                 </select>
 
@@ -79,6 +102,7 @@
                     type="text"
                     id="equipamento"
                     name="equipamento"
+                    value="{{ chamado.equipamento if chamado else ''}}"
 
                 >
 
@@ -93,9 +117,8 @@
                 id="descricao"
                 name="descricao"
                 rows="7"
-                                
-                ></textarea>
-
+                >{{ chamado.descricao if chamado else '' }}</textarea>                            
+                
             </div>
 
         </div>

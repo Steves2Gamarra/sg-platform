@@ -71,11 +71,34 @@
         
         </a>
 
-        <button class="btn btn-secondary">
+        <a 
+
+            href="{{ url_for('editar_chamado', id=chamado.numero.split('-')[1]|int) }}"
+            
+            class="btn btn-secondary">
 
             Editar
+        
+        </a>
 
-        </button>
+        <form
+
+            method="POST"
+            action="{{ url_for('excluir_chamado', id=chamado.numero[3:]|int) }}"
+            style="display:inline;"
+            onsubmit="return confirm('Deseja realmente excluir este chamado?')">
+
+            <button
+
+                type="submit"
+                class="btn btn-danger">
+            
+                Excluir
+            
+            </button>
+        
+            
+        </form>
 
     </td>
 

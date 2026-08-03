@@ -56,6 +56,33 @@ def editar_chamado(id):
 
     )
 
+@app.route("/chamados/<int:id>/editar", methods=["POST"])
+def salvar_edicao(id):
+
+    titulo = request.form.get("titulo")
+    categoria = request.form.get("categoria")
+    equipamento = request.form.get("equipamento")
+    descricao = request.form.get("descricao")
+
+    ChamadoService.atualizar(
+
+        id,
+        titulo,
+        categoria,
+        equipamento,
+        descricao
+
+    )
+
+    return redirect(url_for("chamados"))
+
+@app.route("/chamados/<int:id>/excluir", methods=["POST"])
+def excluir_chamado(id):
+
+    ChamadoService.excluir(id)
+
+    return redirect(url_for("chamados"))
+
 
 @app.route("/chamados/novo", methods=["GET", "POST"])
 def novo_chamado():
