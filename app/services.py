@@ -115,7 +115,7 @@ class ChamadoService:
     @staticmethod
     def listar():
 
-        return ChamadoService._chamados
+        return Chamado.query.order_by(Chamado.numero).all()
 
     @staticmethod
     def buscar_por_numero(numero):

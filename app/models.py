@@ -1,3 +1,5 @@
+from app import db
+
 class Recurso:
 
     def __init__(self, titulo, descricao):
@@ -5,7 +7,19 @@ class Recurso:
         self.descricao = descricao
 
 
-class Chamado:
+class Chamado(db.Model):
+
+    __tablename__ = "chamados"
+
+    numero = db.Column(db.String(10), primary_key=True)
+    titulo = db.Column(db.String(150), nullable=False)
+    categoria = db.Column(db.String(50), nullable=False)
+    equipamento = db.Column(db.String(150))
+    descricao = db.Column(db.Text)
+    status = db.Column(db.String(30))
+    prioridade = db.Column(db.String(30))
+    responsavel = db.Column(db.String(100))
+    data_abertura = db.Column(db.String(30))
 
     def __init__(
         self,
@@ -51,3 +65,4 @@ class Chamado:
             return "badge-medium"
 
         return "badge-low"
+        
