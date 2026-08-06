@@ -1,3 +1,4 @@
+from app import db
 from app.models import Recurso, Chamado
 from datetime import datetime
 
@@ -47,54 +48,24 @@ class RecursoService:
         ]
 
 class ChamadoService:
-
-    _chamados = [
-
-        Chamado(
-            "CH-0001",
-            "Servidor indisponível",
-            "Hardware",
-            "Servidor Principal",
-            "Servidor indisponível desde às 08:00.",
-            "Aberto",
-            "Alta",
-            "Carlos Silva",
-            "30/07/2026 08:00"
-
-        ),
-
-        Chamado(
-            "CH-0002",
-            "Erro ao acessar o e-mail",
-            "Software",
-            "Notebook Dell Latitude",
-            "Usuário não consegue acessar o Outlook",
-            "Em andamento",
-            "Média",
-            "Ana Souza",
-            "30/07/2026 09:15"
-
-        ),
-
-        Chamado(
-            "CH-0003",
-            "Instalação do Office",
-            "Software",
-            "Notebook Lenovo",
-            "Solicitação de instalação do Microsoft Office.",
-            "Concluído",
-            "Baixa",
-            "João Pereira",
-            "29/07/2026 15:30"
-
-        )
-
-    ]
-
+    
     @staticmethod
     def cadastrar(titulo, categoria, equipamento, descricao):
 
-        numero = f"CH-{len(ChamadoService._chamados) + 1:04d}"
+        ultimo = Chamado.query.order_by(
+
+            Chamado.numero.desc()
+
+        ).first()
+
+        if ultimo:
+        
+            proximo = int(ultimo.numero[3:]) + 1
+
+        else:
+            proximo = 1
+
+        numero = f"CH-{proximo:04d}"
 
         chamado = Chamado(
 
@@ -110,7 +81,9 @@ class ChamadoService:
 
     )
 
-        ChamadoService._chamados.append(chamado)
+        db.session.add(chamado)
+
+        db.session.commit()
 
     @staticmethod
     def listar():
@@ -122,13 +95,11 @@ class ChamadoService:
 
         numero_formatado = f"CH-{numero:04d}"
 
-        for chamado in ChamadoService._chamados:
+        return Chamado.query.filter_by(
 
-            if chamado.numero == numero_formatado:
+            numero=numero_formatado
 
-                return chamado
-            
-        return None
+        ).first()
 
     @staticmethod
     def atualizar(numero, titulo, categoria, equipamento, descricao):
@@ -144,6 +115,8 @@ class ChamadoService:
         chamado.equipamento = equipamento
         chamado.descricao = descricao
 
+        db.session.commit()
+
     @staticmethod
     def excluir(numero):
 
@@ -153,7 +126,9 @@ class ChamadoService:
 
             return
 
-        ChamadoService._chamados.remove(chamado)
+        db.session.delete(chamado)
+
+        db.session.commit()
 
 
     

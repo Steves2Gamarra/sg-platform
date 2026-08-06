@@ -44,25 +44,21 @@ class Chamado(db.Model):
         self.responsavel = responsavel
         self.data_abertura = data_abertura
 
-    @property
-    def status_css(self):
+class Usuario(db.Model):
 
-        if self.status == "Aberto":
-            return "badge-open"
+    __tablename__ = "usuarios"
 
-        if self.status == "Em andamento":
-            return "badge-progress"
+    id = db.Column(db.Integer, primary_key=True)
 
-        return "badge-closed"
+    nome = db.Column(db.String(100), nullable=False)
 
-    @property
-    def prioridade_css(self):
+    email = db.Column(db.String(120), unique=True, nullable=False)
 
-        if self.prioridade == "Alta":
-            return "badge-high"
+    senha = db.Column(db.String(255), nullable=False)
 
-        if self.prioridade == "Média":
-            return "badge-medium"
+    perfil = db.Column(db.String(30), nullable=False)
 
-        return "badge-low"
+    ativo = db.Column(db.Boolean, default=True)
+
+   
         

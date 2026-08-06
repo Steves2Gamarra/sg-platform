@@ -10,8 +10,18 @@ db = SQLAlchemy(app)
 
 from app.models import Chamado
 
+from app.seed import criar_dados_iniciais
+
 from flask_migrate import Migrate
 
 migrate = Migrate(app, db)
 
-from app import routes
+with app.app_context():
+
+    db.create_all()
+
+    criar_dados_iniciais()
+
+from app.chamados import chamados_bp
+
+app.register_blueprint(chamados_bp)

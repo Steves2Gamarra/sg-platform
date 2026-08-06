@@ -103,7 +103,8 @@
 
                 <a
 
-                href="#"
+                href="{{ url_for('editar_chamado', id=chamado.numero[3:]|int) }}"
+
                 class="btn btn-primary">
     
                 Editar
