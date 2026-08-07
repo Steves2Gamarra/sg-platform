@@ -12,14 +12,13 @@
 
         <a
 
-            href="{{ url_for('novo_chamado') }}"
+            href="{{ url_for('chamados.novo_chamado') }}"
 
             class="btn btn-primary">
         
             Novo Chamado
         
         </a>
-        
     </div>
 
     <div class="table-container">
@@ -44,7 +43,7 @@
 
             <tbody>
 
-                {% for chamado in chamados %}
+{% for chamado in chamados %}
 
 <tr>
 
@@ -55,21 +54,15 @@
     <td>{{ chamado.categoria }}</td>
 
     <td>
-
         <span class="badge {{ chamado.status_css }}">
             {{ chamado.status }}
-
         </span>
-
     </td>
 
     <td>
-
         <span class="badge {{ chamado.prioridade_css }}">
             {{ chamado.prioridade }}
-
         </span>
-
     </td>
 
     <td>{{ chamado.responsavel }}</td>
@@ -77,41 +70,35 @@
     <td>
 
         <a
-
-            href="{{ url_for('visualizar_chamado', id=chamado.numero[3:]|int) }}"
+            href="{{ url_for('chamados.visualizar_chamado', id=chamado.numero[3:]|int) }}"
             class="btn btn-primary">
 
             Detalhes
-        
+
         </a>
 
-        <a 
-
-            href="{{ url_for('editar_chamado', id=chamado.numero.split('-')[1]|int) }}"
-            
+        <a
+            href="{{ url_for('chamados.editar_chamado', id=chamado.numero[3:]|int) }}"
             class="btn btn-secondary">
 
             Editar
-        
+
         </a>
 
         <form
-
             method="POST"
-            action="{{ url_for('excluir_chamado', id=chamado.numero[3:]|int) }}"
+            action="{{ url_for('chamados.excluir_chamado', id=chamado.numero[3:]|int) }}"
             style="display:inline;"
             onsubmit="return confirm('Deseja realmente excluir este chamado?')">
 
             <button
-
                 type="submit"
                 class="btn btn-danger">
-            
+
                 Excluir
-            
+
             </button>
-        
-            
+
         </form>
 
     </td>
@@ -120,7 +107,7 @@
 
 {% endfor %}
 
-            </tbody>
+</tbody>
 
         </table>
 

@@ -90,28 +90,23 @@
 
              </div>
 
-            <div class="form-actions">
+           <div class="form-actions">
 
-              <a
+            <a
+                href="{{ url_for('chamados.chamados') }}"
+                class="btn btn-secondary">
 
-               href="{{ url_for('chamados') }}"
-               class="btn btn-secondary">
-        
-              Voltar
-    
+                Voltar
+
                 </a>
 
                 <a
-
-                href="{{ url_for('editar_chamado', id=chamado.numero[3:]|int) }}"
-
+                href="{{ url_for('chamados.editar_chamado', id=chamado.numero[3:]|int) }}"
                 class="btn btn-primary">
-    
+
                 Editar
 
-                </a>
-
-        </div>
+            </a>
 
     </div>
 
