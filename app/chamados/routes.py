@@ -2,9 +2,11 @@ from flask import render_template, request, redirect, url_for
 
 from . import chamados_bp
 from app.services import RecursoService, ChamadoService
+from app.auth.decorators import login_required
 
 
 @chamados_bp.route("/")
+@login_required
 def home():
 
     recursos = RecursoService.listar()
@@ -16,6 +18,7 @@ def home():
 
 
 @chamados_bp.route("/chamados")
+@login_required
 def chamados():
 
     chamados = ChamadoService.listar()
@@ -27,6 +30,7 @@ def chamados():
 
 
 @chamados_bp.route("/chamados/<int:id>")
+@login_required
 def visualizar_chamado(id):
 
     chamado = ChamadoService.buscar_por_numero(id)
@@ -41,6 +45,7 @@ def visualizar_chamado(id):
 
 
 @chamados_bp.route("/chamados/<int:id>/editar")
+@login_required
 def editar_chamado(id):
 
     chamado = ChamadoService.buscar_por_numero(id)
@@ -57,6 +62,7 @@ def editar_chamado(id):
 
 
 @chamados_bp.route("/chamados/<int:id>/editar", methods=["POST"])
+@login_required
 def salvar_edicao(id):
 
     titulo = request.form.get("titulo")
@@ -76,6 +82,7 @@ def salvar_edicao(id):
 
 
 @chamados_bp.route("/chamados/<int:id>/excluir", methods=["POST"])
+@login_required
 def excluir_chamado(id):
 
     ChamadoService.excluir(id)
@@ -84,6 +91,7 @@ def excluir_chamado(id):
 
 
 @chamados_bp.route("/chamados/novo", methods=["GET", "POST"])
+@login_required
 def novo_chamado():
 
     if request.method == "POST":

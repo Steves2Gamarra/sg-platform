@@ -1,7 +1,7 @@
 from app import db
 from app.models import Recurso, Chamado, Usuario
 from datetime import datetime
-from werkzeug.security import check_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 
 
 class RecursoService:
@@ -146,5 +146,45 @@ class UsuarioService:
 
         if not check_password_hash(usuario.senha, senha):
             return None
+
+        return usuario
+
+
+    @staticmethod
+    def listar():
+
+        return Usuario.query.order_by(
+            Usuario.nome
+        ).all()
+
+
+    @staticmethod
+    def buscar_por_id(id):
+
+        return Usuario.query.get(id)
+
+
+    @staticmethod
+    def cadastrar(
+        nome,
+        email,
+        senha,
+        perfil,
+        ativo=True
+    ):
+
+        usuario = Usuario(
+
+            nome=nome,
+            email=email,
+            senha=generate_password_hash(senha),
+            perfil=perfil,
+            ativo=ativo
+
+        )
+
+        db.session.add(usuario)
+
+        db.session.commit()
 
         return usuario
